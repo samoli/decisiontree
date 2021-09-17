@@ -7,6 +7,8 @@ module DecisionTree
   Node = Struct.new(:attribute, :threshold, :gain)
 
   using ArrayClassification
+  using ArrayEntropy
+  using ObjectPersistence
 
   class ID3Tree
     def initialize(attributes, data, default, type)

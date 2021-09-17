@@ -17,4 +17,3 @@ module ArrayClassification
     end
   end
 end
-

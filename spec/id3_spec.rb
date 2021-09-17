@@ -1,19 +1,18 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe describe DecisionTree::ID3Tree do
-
   describe "simple discrete case" do
-    Given(:labels) { ["sun", "rain"]}
+    Given(:labels) { ["sun", "rain"] }
     Given(:data) do
       [
-        [1,0,1],
-        [0,1,0]
+        [1, 0, 1],
+        [0, 1, 0]
       ]
     end
     Given(:tree) { DecisionTree::ID3Tree.new(labels, data, 1, :discrete) }
     When { tree.train }
-    Then { expect(tree.predict([1,0])).to eq 1 }
-    Then { expect(tree.predict([0,1])).to eq 0 }
+    Then { expect(tree.predict([1, 0])).to eq 1 }
+    Then { expect(tree.predict([0, 1])).to eq 0 }
   end
 
   describe "discrete attributes" do
@@ -84,7 +83,7 @@ describe describe DecisionTree::ID3Tree do
     end
     Given(:tree) { DecisionTree::ID3Tree.new(labels, data, "RED", :discrete) }
     When { tree.train }
-    Then { expect(tree.predict(["a1","b0","c0"])).to eq "RED" }
+    Then { expect(tree.predict(["a1", "b0", "c0"])).to eq "RED" }
   end
 
   describe "numerical labels case" do
@@ -109,11 +108,11 @@ describe describe DecisionTree::ID3Tree do
       File.delete("#{FIGURE_FILENAME}.png") if File.file?("#{FIGURE_FILENAME}.png")
     end
 
-    Given(:labels) { ["sun", "rain"]}
+    Given(:labels) { ["sun", "rain"] }
     Given(:data) do
       [
-        [1,0,1],
-        [0,1,0]
+        [1, 0, 1],
+        [0, 1, 0]
       ]
     end
     Given(:tree) { DecisionTree::ID3Tree.new(labels, data, 1, :discrete) }

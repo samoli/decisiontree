@@ -1,5 +1,5 @@
-require 'rubygems'
-require 'decisiontree'
+require "rubygems"
+require "decisiontree"
 
 # ---Discrete---
 
@@ -7,12 +7,12 @@ require 'decisiontree'
 training = []
 attributes = nil
 
-File.open('data/discrete-training.txt', 'r').each_line do |line|
-  data = line.strip.split(',')
+File.open("data/discrete-training.txt", "r").each_line do |line|
+  data = line.strip.split(",")
   attributes ||= data
   training_data = data.collect do |v|
     case v
-    when 'will buy'
+    when "will buy"
       1
     when "won't buy"
       0
@@ -35,11 +35,11 @@ dec_tree.train
 # Read in the test cases
 # Note: omit the attribute line (first line), we know the labels from the training data
 test = []
-File.open('data/discrete-test.txt', 'r').each_line do |line|
-  data = line.strip.split(',')
+File.open("data/discrete-test.txt", "r").each_line do |line|
+  data = line.strip.split(",")
   test_data = data.collect do |v|
     case v
-    when 'will buy'
+    when "will buy"
       1
     when "won't buy"
       0
@@ -57,4 +57,4 @@ test.each do |t|
 end
 
 # Graph the tree, save to 'discrete.png'
-dec_tree.graph('discrete')
+dec_tree.graph("discrete")

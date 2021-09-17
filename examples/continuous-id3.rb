@@ -1,5 +1,5 @@
-require 'rubygems'
-require 'decisiontree'
+require "rubygems"
+require "decisiontree"
 include DecisionTree
 
 # ---Continuous---
@@ -8,14 +8,14 @@ include DecisionTree
 training = []
 attributes = nil
 
-File.open('data/continuous-training.txt', 'r').each_line do |line|
-  data = line.strip.chomp('.').split(',')
+File.open("data/continuous-training.txt", "r").each_line do |line|
+  data = line.strip.chomp(".").split(",")
   attributes ||= data
   training_data = data.collect do |v|
     case v
-    when 'healthy'
+    when "healthy"
       1
-    when 'colic'
+    when "colic"
       0
     else
       v.to_f
@@ -36,11 +36,11 @@ dec_tree.train
 # Read in the test cases
 # Note: omit the attribute line (first line), we know the labels from the training data
 test = []
-File.open('data/continuous-test.txt', 'r').each_line do |line|
-  data = line.strip.chomp('.').split(',')
+File.open("data/continuous-test.txt", "r").each_line do |line|
+  data = line.strip.chomp(".").split(",")
   test_data = data.collect do |v|
-    if v == 'healthy' || v == 'colic'
-      v == 'healthy' ? 1 : 0
+    if v == "healthy" || v == "colic"
+      v == "healthy" ? 1 : 0
     else
       v.to_f
     end
